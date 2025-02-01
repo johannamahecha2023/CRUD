@@ -2,11 +2,17 @@ var express = require('express');
 var router = express.Router();
 const {conexion}=require('../database/conexion')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+
+router.get('/',function(req,res,next){
+   conexion.query('SELECT * FROM persona;',(error,resultado)=>{
+    if(error){
+      console.log(`ocurrio un error en la ejecucion ${error}`)
+      res.status(500).send('error intentelo mas tarde')
+    }else {
+      res.status(200).render('index', { resultado })
+    }
+   })
 });
- 
 // primera operacion CRUD permite agregar registros a la BD
 router.post('/agregar', (req,res)=> {
     const nombre=req.body.nombre
@@ -23,4 +29,5 @@ router.post('/agregar', (req,res)=> {
       }
     })
 })
+
 module.exports = router;

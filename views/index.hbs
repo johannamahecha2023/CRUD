@@ -1,2 +1,26 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+
+        <div>
+            <h1>CRUD</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Correo</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                     {{#each resultado}}
+                    <tr>
+                        <td>{{nombre}}</td>
+                        <td>{{apellido}}</td>
+                        <td>{{fecha_nacimiento}}</td>
+                        <td>{{correo}}</td>
+                    </tr>
+                     {{/each}}
+                 </tbody>
+            </table>
+            <a href="./index.html">Volver</a>
+       </div>
+    </div>
